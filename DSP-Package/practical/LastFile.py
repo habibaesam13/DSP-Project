@@ -508,17 +508,18 @@ def Apply_Process():
                 else:
                     messagebox.showinfo("Alert", "We can Not resample with Fs small than NYQUIST")
         ###remove dc component from each segment
-        if not(isSampled):
-            for indexArr1, indexArr2, newArrC1, newArrC2 in zip(Class1_afterFiltring_val, Class2_afterFiltring_val,
-                                                                Class1_afterFiltringResam_val, Class2_afterFiltringResam_val):
-                newArrC1=remove_dc_component(indexArr1)
-                newArrC2=remove_dc_component(indexArr2)
-            Class1_afterFiltring_val=Class1_afterFiltringResam_val
-            Class2_afterFiltring_val=Class2_afterFiltringResam_val
-
-        else:
+        if (isSampled):
             Class1_afterFiltring_val = Class1_afterFiltringResam_val
             Class2_afterFiltring_val = Class2_afterFiltringResam_val
+
+
+        for indexArr1, indexArr2, newArrC1, newArrC2 in zip(Class1_afterFiltring_val, Class2_afterFiltring_val,
+                                                            Class1_afterFiltringResam_val,
+                                                            Class2_afterFiltringResam_val):
+            newArrC1 = remove_dc_component(indexArr1)
+            newArrC2 = remove_dc_component(indexArr2)
+        Class1_afterFiltring_val = Class1_afterFiltringResam_val
+        Class2_afterFiltring_val = Class2_afterFiltringResam_val
         print("\nREMOVE DC COMPONENT IS DONE !!!!!\n")
         ####Normalize all ######
         for indexArr1, indexArr2, newArrC1, newArrC2 in zip(Class1_afterFiltring_val, Class2_afterFiltring_val,
