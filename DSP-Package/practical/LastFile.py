@@ -369,11 +369,11 @@ def decide_correlation(class1_content,class2_content):
     print(f"Correlation with Class 2: {correlation_class21}")
     print(f"Correlation with Class 2: {correlation_class22}")
 
-    if correlation_class11 > correlation_class21:
+    if abs(correlation_class11) > abs(correlation_class21):
         print("The test 1 file  is highly correlated with Class A.")
     else:
         print("The test 1 file  is highly correlated with Class B.")
-    if  correlation_class12 > correlation_class22:
+    if  abs(correlation_class12) >abs(correlation_class22) :
         print("The test 2 file  is highly correlated with Class A.")
     else:
         print("The test 2 file  is highly correlated with Class B.")
